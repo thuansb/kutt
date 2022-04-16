@@ -31,6 +31,15 @@ router.post(
 );
 
 router.patch(
+  "/edit",
+  asyncHandler(auth.apikey),
+  asyncHandler(auth.jwt),
+  validators.editByAddress,
+  asyncHandler(helpers.verify),
+  asyncHandler(link.editByAddress)
+);
+
+router.patch(
   "/:id",
   asyncHandler(auth.apikey),
   asyncHandler(auth.jwt),
